@@ -24,17 +24,31 @@ window.addEventListener("keydown", (event) => {
 });
 
 const pourSection = document.querySelector(".concept-section");
+const pourVisual = document.querySelector(".pour-visual");
 const liquid = document.querySelector(".cup-liquid");
 const fillNumber = document.querySelector(".fill-number");
+const matchaSurface = document.querySelector(".matcha-surface");
+const matchaCloud = document.querySelector(".matcha-cloud");
+const pourStream = document.querySelector(".pour-stream");
+const pourStreamLength = pourStream?.getTotalLength() || 160;
 
 function updatePour() {
-  if (!pourSection || !liquid) return;
-  const bounds = pourSection.getBoundingClientRect();
-  const travel = window.innerHeight + bounds.height;
-  const progress = reducedMotion ? 1 : Math.max(0, Math.min(1, (window.innerHeight - bounds.top) / Math.max(1, travel)));
-  const height = 224 * progress;
-  liquid.setAttribute("y", String(292 - height));
+  if ((!pourSection && !pourVisual) || !liquid) return;
+  const isMobile = window.matchMedia("(max-width: 650px)").matches;
+  const bounds = (isMobile ? pourVisual : pourSection)?.getBoundingClientRect();
+  if (!bounds) return;
+  const start = window.innerHeight * (isMobile ? 0.9 : 0.78);
+  const end = window.innerHeight * (isMobile ? 0.25 : 0.04);
+  const progress = reducedMotion ? 1 : Math.max(0, Math.min(1, (start - bounds.top) / (start - end)));
+  const height = 203 * progress;
+  liquid.setAttribute("y", "105");
   liquid.setAttribute("height", String(height));
+  matchaSurface?.setAttribute("opacity", String(progress > 0.015 ? Math.min(0.82, progress * 2.2) : 0));
+  matchaCloud?.setAttribute("opacity", String(Math.max(0, Math.min(0.72, (height - 34) / 105))));
+  if (pourStream) {
+    pourStream.setAttribute("stroke-dasharray", `${pourStreamLength * progress} ${pourStreamLength}`);
+    pourStream.style.opacity = String(Math.max(0, Math.min(1, progress * 7, (1 - progress) * 6)));
+  }
   if (fillNumber) fillNumber.textContent = `${Math.round(progress * 100)}%`;
 }
 

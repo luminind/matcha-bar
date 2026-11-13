@@ -61,28 +61,43 @@
       <section class="concept-section" id="concept" aria-labelledby="concept-title">
         <div class="concept-grid">
           <div class="pour-visual" aria-label="Illustration d’un matcha latte qui se remplit en faisant défiler la page">
-            <div class="pour-caption"><span>LE PETIT RITUEL</span><span>01 / 03</span></div>
+            <div class="pour-caption"><span>LE PETIT RITUEL</span><span>LAIT · GLAÇONS · MATCHA</span></div>
             <div class="cup-wrap">
-              <span class="cup-steam steam-one" aria-hidden="true"></span><span class="cup-steam steam-two" aria-hidden="true"></span>
               <svg class="latte-cup" viewBox="0 0 250 360" role="img" aria-labelledby="cup-title cup-desc">
                 <title id="cup-title">Un verre de matcha latte</title>
-                <desc id="cup-desc">Le verre se remplit de matcha au fil du défilement.</desc>
+                <desc id="cup-desc">Du matcha est versé dans du lait et des glaçons, puis se mêle au lait pendant le défilement.</desc>
                 <defs>
-                  <clipPath id="glass-clip"><path d="M45 42 Q45 35 54 35 H196 Q205 35 204 44 L184 302 Q182 321 125 326 Q68 321 66 302 Z" /></clipPath>
-                  <linearGradient id="matcha-gradient" x1="0" x2="1" y1="0" y2="1"><stop offset="0" stop-color="#a9b980" /><stop offset="1" stop-color="#667d4f" /></linearGradient>
-                  <linearGradient id="milk-gradient" x1="0" x2="0" y1="0" y2="1"><stop offset="0" stop-color="#fffdf7" /><stop offset="1" stop-color="#e8e1cf" /></linearGradient>
+                  <clipPath id="glass-clip"><path d="M45 57 Q45 50 54 50 H196 Q205 50 204 59 L184 302 Q182 321 125 326 Q68 321 66 302 Z" /></clipPath>
+                  <linearGradient id="matcha-gradient" x1="0" x2="0" y1="0" y2="1"><stop offset="0" stop-color="#748a50" /><stop offset=".3" stop-color="#8fa267" /><stop offset=".68" stop-color="#aab889" /><stop offset="1" stop-color="#e3e1cf" /></linearGradient>
+                  <linearGradient id="milk-gradient" x1="0" x2="1" y1="0" y2="1"><stop offset="0" stop-color="#fffef9" /><stop offset=".55" stop-color="#f5f0e2" /><stop offset="1" stop-color="#ddd8c9" /></linearGradient>
+                  <linearGradient id="ice-gradient" x1="0" x2="1" y1="0" y2="1"><stop offset="0" stop-color="#fff" stop-opacity=".88" /><stop offset=".48" stop-color="#e7f0dc" stop-opacity=".48" /><stop offset="1" stop-color="#b9c9ae" stop-opacity=".58" /></linearGradient>
+                  <linearGradient id="pour-gradient" x1="0" x2="1"><stop offset="0" stop-color="#9bae70" /><stop offset=".5" stop-color="#d4dda6" /><stop offset="1" stop-color="#758a50" /></linearGradient>
+                  <filter id="cup-shadow" x="-40%" y="-30%" width="180%" height="180%"><feDropShadow dx="0" dy="11" stdDeviation="8" flood-color="#102719" flood-opacity=".3" /></filter>
+                  <filter id="mix-blur" x="-30%" y="-30%" width="160%" height="160%"><feGaussianBlur stdDeviation="7" /></filter>
+                  <filter id="ice-shadow" x="-30%" y="-30%" width="160%" height="160%"><feDropShadow dx="1" dy="3" stdDeviation="2" flood-color="#263d2d" flood-opacity=".22" /></filter>
                 </defs>
-                <g clip-path="url(#glass-clip)">
-                  <rect class="cup-milk" x="48" y="276" width="155" height="58" fill="url(#milk-gradient)" />
-                  <rect class="cup-liquid" x="48" y="285" width="155" height="0" fill="url(#matcha-gradient)" />
-                  <path class="liquid-glint" d="M52 93 Q124 82 198 96" fill="none" stroke="#e8efcf" stroke-width="2" opacity=".55" />
+                <g filter="url(#cup-shadow)" clip-path="url(#glass-clip)">
+                  <rect class="cup-milk" x="48" y="103" width="155" height="230" fill="url(#milk-gradient)" />
+                  <path class="milk-shadow" d="M53 119 Q125 108 198 120" fill="none" stroke="#fff" stroke-width="4" opacity=".6" />
+                  <rect class="cup-liquid" x="48" y="105" width="155" height="0" fill="url(#matcha-gradient)" />
+                  <ellipse class="matcha-surface" cx="125" cy="106" rx="74" ry="7" fill="#82965c" opacity="0" />
+                  <g class="matcha-cloud" opacity="0" filter="url(#mix-blur)">
+                    <path d="M57 170 C82 142 105 196 132 169 S174 147 197 174" fill="none" stroke="#79934f" stroke-width="25" />
+                    <path d="M59 220 C86 190 117 246 145 215 S179 197 195 222" fill="none" stroke="#9caf71" stroke-width="19" />
+                  </g>
+                  <g class="ice-cube ice-one" filter="url(#ice-shadow)"><path d="M76 126 91 117 106 124 102 141 87 147 73 139Z" fill="url(#ice-gradient)" stroke="#fff" stroke-opacity=".8" stroke-width="1.5" /><path d="M78 127 92 132 104 125M92 132 88 145" fill="none" stroke="#fff" stroke-opacity=".68" stroke-width="1.2" /></g>
+                  <g class="ice-cube ice-two" filter="url(#ice-shadow)"><path d="M113 116 130 110 145 118 142 136 126 143 111 134Z" fill="url(#ice-gradient)" stroke="#fff" stroke-opacity=".9" stroke-width="1.5" /><path d="M115 118 129 124 143 118M129 124 126 140" fill="none" stroke="#fff" stroke-opacity=".72" stroke-width="1.2" /></g>
+                  <g class="ice-cube ice-three" filter="url(#ice-shadow)"><path d="M148 132 163 123 179 131 176 149 160 155 145 146Z" fill="url(#ice-gradient)" stroke="#fff" stroke-opacity=".85" stroke-width="1.5" /><path d="M150 133 164 138 178 131M164 138 160 152" fill="none" stroke="#fff" stroke-opacity=".72" stroke-width="1.2" /></g>
+                  <path class="liquid-glint" d="M57 160 Q125 150 194 160" fill="none" stroke="#f2f4d9" stroke-width="2" opacity=".6" />
                 </g>
-                <path d="M45 42 Q45 35 54 35 H196 Q205 35 204 44 L184 302 Q182 321 125 326 Q68 321 66 302 Z" fill="rgba(255,255,255,.10)" stroke="#f7f3e7" stroke-width="4" />
-                <path d="M58 54 L73 288" fill="none" stroke="rgba(255,255,255,.62)" stroke-width="4" stroke-linecap="round" />
+                <path class="pour-stream" d="M132 3 C129 27 119 42 129 62 C137 79 124 91 127 109" fill="none" stroke="url(#pour-gradient)" stroke-width="9" stroke-linecap="round" stroke-dasharray="0 160" />
+                <path d="M45 57 Q45 50 54 50 H196 Q205 50 204 59 L184 302 Q182 321 125 326 Q68 321 66 302 Z" fill="rgba(255,255,255,.12)" stroke="#f7f3e7" stroke-width="4" />
+                <path d="M44 54 Q125 46 206 54" fill="none" stroke="#f7f3e7" stroke-width="5" stroke-linecap="round" />
+                <path d="M58 69 L73 288" fill="none" stroke="rgba(255,255,255,.68)" stroke-width="4" stroke-linecap="round" />
                 <path d="M87 336 Q125 344 164 336" fill="none" stroke="#f7f3e7" stroke-width="3" stroke-linecap="round" />
-                <path d="M115 33 L143 4" fill="none" stroke="#e7c1bd" stroke-width="5" stroke-linecap="round" />
+                <rect x="99" y="263" width="52" height="26" rx="13" fill="#f7f3e7" fill-opacity=".56" />
+                <text x="125" y="280" text-anchor="middle" fill="#486040" font-family="Georgia, serif" font-size="10" letter-spacing="1">MATCHA BAR</text>
               </svg>
-              <span class="cup-label">MATCHA<br />BAR</span>
               <span class="fill-number" aria-hidden="true">00%</span>
             </div>
             <div class="pour-bottom"><span>Matcha, lait & un peu de magie</span><span aria-hidden="true">↓</span></div>
