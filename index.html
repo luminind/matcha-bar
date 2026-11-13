@@ -68,14 +68,22 @@
                 <desc id="cup-desc">Le matcha monte progressivement dans le verre pendant le défilement, avec des glaçons.</desc>
                 <defs>
                   <clipPath id="glass-clip"><path d="M45 42 Q45 35 54 35 H196 Q205 35 204 44 L184 302 Q182 321 125 326 Q68 321 66 302 Z" /></clipPath>
-                  <linearGradient id="matcha-gradient" x1="0" x2="1" y1="0" y2="1"><stop offset="0" stop-color="#a9b980" /><stop offset="1" stop-color="#667d4f" /></linearGradient>
+                  <linearGradient id="matcha-gradient" x1="0" x2="0" y1="0" y2="1"><stop offset="0" stop-color="#4f702f" /><stop offset=".22" stop-color="#6c8c42" /><stop offset=".48" stop-color="#9aae68" /><stop offset=".72" stop-color="#d0d5b5" /><stop offset="1" stop-color="#f7f1e4" /></linearGradient>
                   <linearGradient id="milk-gradient" x1="0" x2="0" y1="0" y2="1"><stop offset="0" stop-color="#fffdf7" /><stop offset="1" stop-color="#e8e1cf" /></linearGradient>
                   <linearGradient id="ice-gradient" x1="0" x2="1" y1="0" y2="1"><stop offset="0" stop-color="#fff" stop-opacity=".88" /><stop offset=".48" stop-color="#e7f0dc" stop-opacity=".48" /><stop offset="1" stop-color="#b9c9ae" stop-opacity=".58" /></linearGradient>
+                  <filter id="ombre-blur" x="-25%" y="-15%" width="150%" height="130%"><feGaussianBlur stdDeviation="5" /></filter>
                   <filter id="ice-shadow" x="-30%" y="-30%" width="160%" height="160%"><feDropShadow dx="1" dy="2" stdDeviation="2.5" flood-color="#263d2d" flood-opacity=".17" /></filter>
                 </defs>
                 <g clip-path="url(#glass-clip)">
                   <rect class="cup-milk" x="48" y="276" width="155" height="58" fill="url(#milk-gradient)" />
                   <rect class="cup-liquid" x="48" y="285" width="155" height="0" fill="url(#matcha-gradient)" />
+                  <g class="matcha-ombre" opacity="0" filter="url(#ombre-blur)">
+                    <path d="M75 170 C92 189 69 207 84 225 C98 245 75 263 82 291" fill="none" stroke="#718b4e" stroke-opacity=".62" stroke-width="20" stroke-linecap="round" />
+                    <path d="M119 170 C105 189 128 206 112 228 C100 246 123 264 114 292" fill="none" stroke="#afbd87" stroke-opacity=".74" stroke-width="18" stroke-linecap="round" />
+                    <path d="M159 179 C174 198 148 215 164 233 C178 250 154 270 159 293" fill="none" stroke="#789354" stroke-opacity=".58" stroke-width="19" stroke-linecap="round" />
+                    <path d="M91 294 C99 280 92 268 99 256 M137 295 C130 282 138 269 132 257" fill="none" stroke="#f7f1e4" stroke-opacity=".72" stroke-width="8" stroke-linecap="round" />
+                  </g>
+                  <g class="ice-cluster">
                   <g class="ice-cube ice-one" filter="url(#ice-shadow)" transform="rotate(-10 86 139)">
                     <path d="M67 130 C67 126 71 123 75 124 L91 118 C95 116 100 119 101 123 L104 136 C105 140 102 143 98 145 L82 151 C77 153 72 150 71 146 L68 138 C67 135 66 133 67 130Z" fill="url(#ice-gradient)" fill-opacity=".7" stroke="#f9fff0" stroke-opacity=".32" stroke-width="1" />
                     <path d="M70 130 Q82 135 101 123 M82 135 Q90 140 96 148" fill="none" stroke="#fff" stroke-opacity=".28" stroke-width="1.2" stroke-linecap="round" />
@@ -91,12 +99,12 @@
                     <path d="M146 129 Q157 134 174 129 M157 134 Q164 141 164 151" fill="none" stroke="#fff" stroke-opacity=".28" stroke-width="1.2" stroke-linecap="round" />
                     <path d="M151 126 Q160 126 167 128" fill="none" stroke="#fff" stroke-opacity=".6" stroke-width="2" stroke-linecap="round" />
                   </g>
+                  </g>
                   <path class="liquid-glint" d="M52 93 Q124 82 198 96" fill="none" stroke="#e8efcf" stroke-width="2" opacity=".55" />
                 </g>
                 <path d="M45 42 Q45 35 54 35 H196 Q205 35 204 44 L184 302 Q182 321 125 326 Q68 321 66 302 Z" fill="rgba(255,255,255,.10)" stroke="#f7f3e7" stroke-width="4" />
                 <path d="M58 54 L73 288" fill="none" stroke="rgba(255,255,255,.62)" stroke-width="4" stroke-linecap="round" />
                 <path d="M87 336 Q125 344 164 336" fill="none" stroke="#f7f3e7" stroke-width="3" stroke-linecap="round" />
-                <path d="M115 33 L143 4" fill="none" stroke="#e7c1bd" stroke-width="5" stroke-linecap="round" />
               </svg>
               <span class="cup-label">MATCHA<br />BAR</span>
               <span class="fill-number" aria-hidden="true">00%</span>

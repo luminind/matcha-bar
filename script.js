@@ -24,17 +24,25 @@ window.addEventListener("keydown", (event) => {
 });
 
 const pourSection = document.querySelector(".concept-section");
+const pourVisual = document.querySelector(".pour-visual");
 const liquid = document.querySelector(".cup-liquid");
 const fillNumber = document.querySelector(".fill-number");
+const matchaOmbre = document.querySelector(".matcha-ombre");
+const iceCluster = document.querySelector(".ice-cluster");
 
 function updatePour() {
-  if (!pourSection || !liquid) return;
-  const bounds = pourSection.getBoundingClientRect();
-  const travel = window.innerHeight + bounds.height;
-  const progress = reducedMotion ? 1 : Math.max(0, Math.min(1, (window.innerHeight - bounds.top) / Math.max(1, travel)));
-  const height = 224 * progress;
+  if ((!pourSection && !pourVisual) || !liquid) return;
+  const isMobile = window.matchMedia("(max-width: 650px)").matches;
+  const bounds = (isMobile ? pourVisual : pourSection)?.getBoundingClientRect();
+  if (!bounds) return;
+  const start = window.innerHeight * (isMobile ? 0.9 : 0.78);
+  const end = window.innerHeight * (isMobile ? 0.25 : 0.04);
+  const progress = reducedMotion ? 1 : Math.max(0, Math.min(1, (start - bounds.top) / (start - end)));
+  const height = 252 * progress;
   liquid.setAttribute("y", String(292 - height));
   liquid.setAttribute("height", String(height));
+  matchaOmbre?.setAttribute("opacity", String(Math.max(0, Math.min(0.72, ((progress - 0.7) / 0.3) * 0.72))));
+  iceCluster?.setAttribute("transform", `translate(0 ${-42 * progress})`);
   if (fillNumber) fillNumber.textContent = `${Math.round(progress * 100)}%`;
 }
 
