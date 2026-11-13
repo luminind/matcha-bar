@@ -68,23 +68,23 @@
                 <desc id="cup-desc">Du matcha est versé dans du lait et des glaçons, puis se mêle au lait pendant le défilement.</desc>
                 <defs>
                   <clipPath id="glass-clip"><path d="M45 57 Q45 50 54 50 H196 Q205 50 204 59 L184 302 Q182 321 125 326 Q68 321 66 302 Z" /></clipPath>
-                  <linearGradient id="matcha-gradient" gradientUnits="userSpaceOnUse" x1="0" x2="0" y1="105" y2="310"><stop offset="0" stop-color="#3f6026" /><stop offset=".2" stop-color="#5b7d32" /><stop offset=".42" stop-color="#7d9945" /><stop offset=".62" stop-color="#a5b86e" /><stop offset=".82" stop-color="#d1d6ad" /><stop offset="1" stop-color="#f3efe3" /></linearGradient>
+                  <linearGradient id="matcha-gradient" gradientUnits="userSpaceOnUse" x1="0" x2="0" y1="62" y2="305"><stop offset="0" stop-color="#3f6026" /><stop offset=".2" stop-color="#5b7d32" /><stop offset=".42" stop-color="#7d9945" /><stop offset=".62" stop-color="#a5b86e" /><stop offset=".82" stop-color="#d1d6ad" /><stop offset="1" stop-color="#f3efe3" /></linearGradient>
                   <linearGradient id="milk-gradient" x1="0" x2="1" y1="0" y2="1"><stop offset="0" stop-color="#fffef9" /><stop offset=".55" stop-color="#f5f0e2" /><stop offset="1" stop-color="#ddd8c9" /></linearGradient>
                   <linearGradient id="ice-gradient" x1="0" x2="1" y1="0" y2="1"><stop offset="0" stop-color="#fff" stop-opacity=".88" /><stop offset=".48" stop-color="#e7f0dc" stop-opacity=".48" /><stop offset="1" stop-color="#b9c9ae" stop-opacity=".58" /></linearGradient>
                   <filter id="cup-shadow" x="-40%" y="-30%" width="180%" height="180%"><feDropShadow dx="0" dy="11" stdDeviation="8" flood-color="#102719" flood-opacity=".3" /></filter>
                   <filter id="mix-blur" x="-30%" y="-30%" width="160%" height="160%"><feGaussianBlur stdDeviation="2.2" /></filter>
+                  <filter id="liquid-edge" x="-15%" y="-15%" width="130%" height="130%"><feGaussianBlur stdDeviation="4.5" /></filter>
                   <filter id="ice-shadow" x="-30%" y="-30%" width="160%" height="160%"><feDropShadow dx="1" dy="2" stdDeviation="2.5" flood-color="#263d2d" flood-opacity=".17" /></filter>
                 </defs>
                 <g filter="url(#cup-shadow)" clip-path="url(#glass-clip)">
-                  <rect class="cup-milk" x="48" y="103" width="155" height="230" fill="url(#milk-gradient)" />
-                  <path class="milk-shadow" d="M53 119 Q125 108 198 120" fill="none" stroke="#fff" stroke-width="4" opacity=".42" />
-                  <rect class="cup-liquid" x="48" y="105" width="155" height="0" fill="url(#matcha-gradient)" />
-                  <ellipse class="matcha-surface" cx="125" cy="107" rx="72" ry="5" fill="#71904a" opacity="0" />
+                  <rect class="cup-milk" x="48" y="62" width="155" height="271" fill="url(#milk-gradient)" />
+                  <path class="cup-liquid" d="M48 62 Q125 57 203 62 L203 62 Q125 62 48 62Z" fill="url(#matcha-gradient)" filter="url(#liquid-edge)" opacity="0" />
                   <g class="matcha-cloud" opacity="0" filter="url(#mix-blur)">
                     <path d="M76 111 C81 128 67 142 77 157 C87 174 76 185 80 204 C83 222 70 238 73 259" fill="none" stroke="#486d28" stroke-width="22" stroke-linecap="round" />
                     <path d="M111 111 C105 128 121 139 112 157 C102 176 115 189 111 206 C107 224 124 237 119 260" fill="none" stroke="#5f8236" stroke-width="20" stroke-linecap="round" />
                     <path d="M151 111 C158 127 145 142 154 158 C163 175 150 190 157 208 C164 228 148 241 154 260" fill="none" stroke="#527632" stroke-width="21" stroke-linecap="round" />
                   </g>
+                  <g class="ice-cluster" transform="translate(0 -37)">
                   <g class="ice-cube ice-one" filter="url(#ice-shadow)" transform="rotate(-10 86 139)">
                     <path d="M67 130 C67 126 71 123 75 124 L91 118 C95 116 100 119 101 123 L104 136 C105 140 102 143 98 145 L82 151 C77 153 72 150 71 146 L68 138 C67 135 66 133 67 130Z" fill="url(#ice-gradient)" fill-opacity=".7" stroke="#f9fff0" stroke-opacity=".32" stroke-width="1" />
                     <path d="M70 130 Q82 135 101 123 M82 135 Q90 140 96 148" fill="none" stroke="#fff" stroke-opacity=".28" stroke-width="1.2" stroke-linecap="round" />
@@ -103,7 +103,7 @@
                   <g class="ice-bubbles" fill="#fff" fill-opacity=".54">
                     <circle cx="59" cy="164" r="1.7" /><circle cx="188" cy="173" r="1.3" /><circle cx="67" cy="190" r="1.1" /><circle cx="183" cy="207" r="1.7" /><circle cx="70" cy="231" r="1.25" />
                   </g>
-                  <path class="liquid-glint" d="M58 108 Q125 101 193 109" fill="none" stroke="#f2f4d9" stroke-width="1.5" opacity=".3" />
+                  </g>
                 </g>
                 <g class="ready-straw" aria-hidden="true">
                   <path d="M150 8 L165 300" fill="none" stroke="#dce9d9" stroke-opacity=".6" stroke-width="7" stroke-linecap="round" />
