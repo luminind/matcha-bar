@@ -88,7 +88,8 @@ h1 em, h2 em { color: var(--green); font-weight: 500; }
 .matcha-cloud { transform-origin: center; animation: cloud-drift 5s ease-in-out infinite alternate; transition: opacity .25s ease; }
 .ice-cube { transform-box: fill-box; transform-origin: center; animation: ice-float 3.8s ease-in-out infinite; }
 .ice-two { animation-delay: -.8s; }.ice-three { animation-delay: -1.7s; }
-.pour-stream { filter: drop-shadow(0 1px 2px rgba(31,53,29,.28)); transition: opacity .18s ease; }
+.ready-straw { opacity: 0; transform: translateY(-20px); transform-box: view-box; transition: opacity .45s ease, transform .6s cubic-bezier(.2,.8,.2,1); filter: drop-shadow(1px 2px 2px rgba(24,39,26,.18)); }
+.ready-straw.is-ready { opacity: 1; transform: translateY(0); }
 .fill-number { position: absolute; top: 16px; right: 7%; color: #e8c4bc; font-family: var(--serif); font-size: 15px; font-style: italic; }
 @keyframes ice-float { 0%,100% { transform: translateY(0) rotate(0); } 50% { transform: translateY(-3px) rotate(2deg); } }
 @keyframes cloud-drift { from { transform: translate(-1px,0) scale(.99); } to { transform: translate(2px,-2px) scale(1.02); } }

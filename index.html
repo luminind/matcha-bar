@@ -68,29 +68,48 @@
                 <desc id="cup-desc">Du matcha est versé dans du lait et des glaçons, puis se mêle au lait pendant le défilement.</desc>
                 <defs>
                   <clipPath id="glass-clip"><path d="M45 57 Q45 50 54 50 H196 Q205 50 204 59 L184 302 Q182 321 125 326 Q68 321 66 302 Z" /></clipPath>
-                  <linearGradient id="matcha-gradient" x1="0" x2="0" y1="0" y2="1"><stop offset="0" stop-color="#748a50" /><stop offset=".3" stop-color="#8fa267" /><stop offset=".68" stop-color="#aab889" /><stop offset="1" stop-color="#e3e1cf" /></linearGradient>
+                  <linearGradient id="matcha-gradient" gradientUnits="userSpaceOnUse" x1="0" x2="0" y1="105" y2="310"><stop offset="0" stop-color="#3f6026" /><stop offset=".2" stop-color="#5b7d32" /><stop offset=".42" stop-color="#7d9945" /><stop offset=".62" stop-color="#a5b86e" /><stop offset=".82" stop-color="#d1d6ad" /><stop offset="1" stop-color="#f3efe3" /></linearGradient>
                   <linearGradient id="milk-gradient" x1="0" x2="1" y1="0" y2="1"><stop offset="0" stop-color="#fffef9" /><stop offset=".55" stop-color="#f5f0e2" /><stop offset="1" stop-color="#ddd8c9" /></linearGradient>
                   <linearGradient id="ice-gradient" x1="0" x2="1" y1="0" y2="1"><stop offset="0" stop-color="#fff" stop-opacity=".88" /><stop offset=".48" stop-color="#e7f0dc" stop-opacity=".48" /><stop offset="1" stop-color="#b9c9ae" stop-opacity=".58" /></linearGradient>
-                  <linearGradient id="pour-gradient" x1="0" x2="1"><stop offset="0" stop-color="#9bae70" /><stop offset=".5" stop-color="#d4dda6" /><stop offset="1" stop-color="#758a50" /></linearGradient>
                   <filter id="cup-shadow" x="-40%" y="-30%" width="180%" height="180%"><feDropShadow dx="0" dy="11" stdDeviation="8" flood-color="#102719" flood-opacity=".3" /></filter>
-                  <filter id="mix-blur" x="-30%" y="-30%" width="160%" height="160%"><feGaussianBlur stdDeviation="7" /></filter>
-                  <filter id="ice-shadow" x="-30%" y="-30%" width="160%" height="160%"><feDropShadow dx="1" dy="3" stdDeviation="2" flood-color="#263d2d" flood-opacity=".22" /></filter>
+                  <filter id="mix-blur" x="-30%" y="-30%" width="160%" height="160%"><feGaussianBlur stdDeviation="2.2" /></filter>
+                  <filter id="ice-shadow" x="-30%" y="-30%" width="160%" height="160%"><feDropShadow dx="1" dy="2" stdDeviation="2.5" flood-color="#263d2d" flood-opacity=".17" /></filter>
                 </defs>
                 <g filter="url(#cup-shadow)" clip-path="url(#glass-clip)">
                   <rect class="cup-milk" x="48" y="103" width="155" height="230" fill="url(#milk-gradient)" />
-                  <path class="milk-shadow" d="M53 119 Q125 108 198 120" fill="none" stroke="#fff" stroke-width="4" opacity=".6" />
+                  <path class="milk-shadow" d="M53 119 Q125 108 198 120" fill="none" stroke="#fff" stroke-width="4" opacity=".42" />
                   <rect class="cup-liquid" x="48" y="105" width="155" height="0" fill="url(#matcha-gradient)" />
-                  <ellipse class="matcha-surface" cx="125" cy="106" rx="74" ry="7" fill="#82965c" opacity="0" />
+                  <ellipse class="matcha-surface" cx="125" cy="107" rx="72" ry="5" fill="#71904a" opacity="0" />
                   <g class="matcha-cloud" opacity="0" filter="url(#mix-blur)">
-                    <path d="M57 170 C82 142 105 196 132 169 S174 147 197 174" fill="none" stroke="#79934f" stroke-width="25" />
-                    <path d="M59 220 C86 190 117 246 145 215 S179 197 195 222" fill="none" stroke="#9caf71" stroke-width="19" />
+                    <path d="M76 111 C81 128 67 142 77 157 C87 174 76 185 80 204 C83 222 70 238 73 259" fill="none" stroke="#486d28" stroke-width="22" stroke-linecap="round" />
+                    <path d="M111 111 C105 128 121 139 112 157 C102 176 115 189 111 206 C107 224 124 237 119 260" fill="none" stroke="#5f8236" stroke-width="20" stroke-linecap="round" />
+                    <path d="M151 111 C158 127 145 142 154 158 C163 175 150 190 157 208 C164 228 148 241 154 260" fill="none" stroke="#527632" stroke-width="21" stroke-linecap="round" />
                   </g>
-                  <g class="ice-cube ice-one" filter="url(#ice-shadow)"><path d="M76 126 91 117 106 124 102 141 87 147 73 139Z" fill="url(#ice-gradient)" stroke="#fff" stroke-opacity=".8" stroke-width="1.5" /><path d="M78 127 92 132 104 125M92 132 88 145" fill="none" stroke="#fff" stroke-opacity=".68" stroke-width="1.2" /></g>
-                  <g class="ice-cube ice-two" filter="url(#ice-shadow)"><path d="M113 116 130 110 145 118 142 136 126 143 111 134Z" fill="url(#ice-gradient)" stroke="#fff" stroke-opacity=".9" stroke-width="1.5" /><path d="M115 118 129 124 143 118M129 124 126 140" fill="none" stroke="#fff" stroke-opacity=".72" stroke-width="1.2" /></g>
-                  <g class="ice-cube ice-three" filter="url(#ice-shadow)"><path d="M148 132 163 123 179 131 176 149 160 155 145 146Z" fill="url(#ice-gradient)" stroke="#fff" stroke-opacity=".85" stroke-width="1.5" /><path d="M150 133 164 138 178 131M164 138 160 152" fill="none" stroke="#fff" stroke-opacity=".72" stroke-width="1.2" /></g>
-                  <path class="liquid-glint" d="M57 160 Q125 150 194 160" fill="none" stroke="#f2f4d9" stroke-width="2" opacity=".6" />
+                  <g class="ice-cube ice-one" filter="url(#ice-shadow)" transform="rotate(-10 86 139)">
+                    <path d="M67 130 C67 126 71 123 75 124 L91 118 C95 116 100 119 101 123 L104 136 C105 140 102 143 98 145 L82 151 C77 153 72 150 71 146 L68 138 C67 135 66 133 67 130Z" fill="url(#ice-gradient)" fill-opacity=".7" stroke="#f9fff0" stroke-opacity=".32" stroke-width="1" />
+                    <path d="M70 130 Q82 135 101 123 M82 135 Q90 140 96 148" fill="none" stroke="#fff" stroke-opacity=".28" stroke-width="1.2" stroke-linecap="round" />
+                    <path d="M74 127 Q81 124 88 122" fill="none" stroke="#fff" stroke-opacity=".62" stroke-width="2" stroke-linecap="round" />
+                  </g>
+                  <g class="ice-cube ice-two" filter="url(#ice-shadow)" transform="rotate(7 123 128)">
+                    <path d="M105 118 C105 114 109 111 114 112 L130 110 C135 109 139 113 139 117 L141 130 C142 135 138 138 134 140 L119 145 C114 147 110 144 108 140 L105 129 C104 125 103 121 105 118Z" fill="url(#ice-gradient)" fill-opacity=".7" stroke="#f9fff0" stroke-opacity=".36" stroke-width="1" />
+                    <path d="M108 118 Q121 124 138 115 M121 124 Q130 130 135 141" fill="none" stroke="#fff" stroke-opacity=".3" stroke-width="1.2" stroke-linecap="round" />
+                    <path d="M112 115 Q121 113 130 113" fill="none" stroke="#fff" stroke-opacity=".65" stroke-width="2" stroke-linecap="round" />
+                  </g>
+                  <g class="ice-cube ice-three" filter="url(#ice-shadow)" transform="rotate(-6 159 139)">
+                    <path d="M144 130 C143 126 147 122 152 123 L167 125 C172 125 176 129 175 133 L173 145 C172 150 168 153 163 152 L149 149 C145 148 142 144 143 140Z" fill="url(#ice-gradient)" fill-opacity=".68" stroke="#f9fff0" stroke-opacity=".33" stroke-width="1" />
+                    <path d="M146 129 Q157 134 174 129 M157 134 Q164 141 164 151" fill="none" stroke="#fff" stroke-opacity=".28" stroke-width="1.2" stroke-linecap="round" />
+                    <path d="M151 126 Q160 126 167 128" fill="none" stroke="#fff" stroke-opacity=".6" stroke-width="2" stroke-linecap="round" />
+                  </g>
+                  <g class="ice-bubbles" fill="#fff" fill-opacity=".54">
+                    <circle cx="59" cy="164" r="1.7" /><circle cx="188" cy="173" r="1.3" /><circle cx="67" cy="190" r="1.1" /><circle cx="183" cy="207" r="1.7" /><circle cx="70" cy="231" r="1.25" />
+                  </g>
+                  <path class="liquid-glint" d="M58 108 Q125 101 193 109" fill="none" stroke="#f2f4d9" stroke-width="1.5" opacity=".3" />
                 </g>
-                <path class="pour-stream" d="M132 3 C129 27 119 42 129 62 C137 79 124 91 127 109" fill="none" stroke="url(#pour-gradient)" stroke-width="9" stroke-linecap="round" stroke-dasharray="0 160" />
+                <g class="ready-straw" aria-hidden="true">
+                  <path d="M150 8 L165 300" fill="none" stroke="#dce9d9" stroke-opacity=".6" stroke-width="7" stroke-linecap="round" />
+                  <path d="M150 9 L164 298" fill="none" stroke="#fff" stroke-opacity=".52" stroke-width="1.6" stroke-linecap="round" />
+                  <path d="M146 12 L154 11" fill="none" stroke="#fff" stroke-opacity=".72" stroke-width="3" stroke-linecap="round" />
+                </g>
                 <path d="M45 57 Q45 50 54 50 H196 Q205 50 204 59 L184 302 Q182 321 125 326 Q68 321 66 302 Z" fill="rgba(255,255,255,.12)" stroke="#f7f3e7" stroke-width="4" />
                 <path d="M44 54 Q125 46 206 54" fill="none" stroke="#f7f3e7" stroke-width="5" stroke-linecap="round" />
                 <path d="M58 69 L73 288" fill="none" stroke="rgba(255,255,255,.68)" stroke-width="4" stroke-linecap="round" />

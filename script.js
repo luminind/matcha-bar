@@ -29,8 +29,7 @@ const liquid = document.querySelector(".cup-liquid");
 const fillNumber = document.querySelector(".fill-number");
 const matchaSurface = document.querySelector(".matcha-surface");
 const matchaCloud = document.querySelector(".matcha-cloud");
-const pourStream = document.querySelector(".pour-stream");
-const pourStreamLength = pourStream?.getTotalLength() || 160;
+const readyStraw = document.querySelector(".ready-straw");
 
 function updatePour() {
   if ((!pourSection && !pourVisual) || !liquid) return;
@@ -44,11 +43,8 @@ function updatePour() {
   liquid.setAttribute("y", "105");
   liquid.setAttribute("height", String(height));
   matchaSurface?.setAttribute("opacity", String(progress > 0.015 ? Math.min(0.82, progress * 2.2) : 0));
-  matchaCloud?.setAttribute("opacity", String(Math.max(0, Math.min(0.72, (height - 34) / 105))));
-  if (pourStream) {
-    pourStream.setAttribute("stroke-dasharray", `${pourStreamLength * progress} ${pourStreamLength}`);
-    pourStream.style.opacity = String(Math.max(0, Math.min(1, progress * 7, (1 - progress) * 6)));
-  }
+  matchaCloud?.setAttribute("opacity", String(Math.max(0, Math.min(0.9, (height - 24) / 80))));
+  readyStraw?.classList.toggle("is-ready", progress >= 1);
   if (fillNumber) fillNumber.textContent = `${Math.round(progress * 100)}%`;
 }
 
