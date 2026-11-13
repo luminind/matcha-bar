@@ -84,7 +84,6 @@ h1 em, h2 em { color: var(--green); font-weight: 500; }
 .cup-wrap { position: relative; height: 390px; display: grid; place-items: center; }
 .latte-cup { width: min(245px, 64%); height: 100%; overflow: visible; filter: drop-shadow(0 15px 20px rgba(13,25,17,.22)); }
 .cup-liquid { transition: y .1s linear, height .1s linear; }
-.matcha-ombre { transition: opacity .4s ease; }
 .cup-label { position: absolute; left: 50%; top: 56%; transform: translate(-50%,-50%); font-family: var(--serif); font-size: 15px; line-height: .85; letter-spacing: -.08em; color: rgba(248,245,233,.88); text-align: center; mix-blend-mode: soft-light; pointer-events: none; }
 .ice-cube { transform-box: fill-box; transform-origin: center; animation: ice-float 3.8s ease-in-out infinite; }
 .ice-two { animation-delay: -.8s; }.ice-three { animation-delay: -1.7s; }

@@ -27,8 +27,8 @@ const pourSection = document.querySelector(".concept-section");
 const pourVisual = document.querySelector(".pour-visual");
 const liquid = document.querySelector(".cup-liquid");
 const fillNumber = document.querySelector(".fill-number");
-const matchaOmbre = document.querySelector(".matcha-ombre");
 const iceCluster = document.querySelector(".ice-cluster");
+const liquidGlint = document.querySelector(".liquid-glint");
 
 function updatePour() {
   if ((!pourSection && !pourVisual) || !liquid) return;
@@ -39,10 +39,12 @@ function updatePour() {
   const end = window.innerHeight * (isMobile ? 0.25 : 0.04);
   const progress = reducedMotion ? 1 : Math.max(0, Math.min(1, (start - bounds.top) / (start - end)));
   const height = 252 * progress;
-  liquid.setAttribute("y", String(292 - height));
+  const surface = 292 - height;
+  liquid.setAttribute("y", String(surface));
   liquid.setAttribute("height", String(height));
-  matchaOmbre?.setAttribute("opacity", String(Math.max(0, Math.min(0.72, ((progress - 0.7) / 0.3) * 0.72))));
-  iceCluster?.setAttribute("transform", `translate(0 ${-42 * progress})`);
+  liquidGlint?.setAttribute("d", `M52 ${surface} Q124 ${surface - 11} 198 ${surface + 3}`);
+  liquidGlint?.setAttribute("opacity", String(progress > 0.01 ? 0.55 : 0));
+  iceCluster?.setAttribute("transform", `translate(0 ${130 - 200 * progress})`);
   if (fillNumber) fillNumber.textContent = `${Math.round(progress * 100)}%`;
 }
 
