@@ -24,36 +24,17 @@ window.addEventListener("keydown", (event) => {
 });
 
 const pourSection = document.querySelector(".concept-section");
-const pourVisual = document.querySelector(".pour-visual");
 const liquid = document.querySelector(".cup-liquid");
 const fillNumber = document.querySelector(".fill-number");
-const matchaCloud = document.querySelector(".matcha-cloud");
-const readyStraw = document.querySelector(".ready-straw");
 
 function updatePour() {
-  if ((!pourSection && !pourVisual) || !liquid) return;
-  const isMobile = window.matchMedia("(max-width: 650px)").matches;
-  const bounds = (isMobile ? pourVisual : pourSection)?.getBoundingClientRect();
-  if (!bounds) return;
-  const start = window.innerHeight * (isMobile ? 0.9 : 0.78);
-  const end = window.innerHeight * (isMobile ? 0.25 : 0.04);
-  const progress = reducedMotion ? 1 : Math.max(0, Math.min(1, (start - bounds.top) / (start - end)));
-  const height = 243 * progress;
-  const front = 62 + height;
-  const wave = Math.min(42, 8 + height * 0.17);
-  const liquidPath = [
-    "M48 62 C68 55 86 69 104 61 S139 58 158 63 S188 69 203 61",
-    `L203 ${front + wave * 0.45}`,
-    `C195 ${front + wave * 0.85} 190 ${front - wave * 0.35} 178 ${front + wave * 0.12}`,
-    `C166 ${front - wave * 0.45} 160 ${front + wave * 1.35} 147 ${front + wave * 0.95}`,
-    `C135 ${front + wave * 0.58} 127 ${front - wave * 0.5} 115 ${front - wave * 0.08}`,
-    `C103 ${front + wave * 0.35} 95 ${front + wave * 1.4} 82 ${front + wave * 0.9}`,
-    `C68 ${front + wave * 0.45} 60 ${front - wave * 0.45} 48 ${front + wave * 0.1}Z`,
-  ].join(" ");
-  liquid.setAttribute("d", liquidPath);
-  liquid.setAttribute("opacity", String(progress));
-  matchaCloud?.setAttribute("opacity", String(Math.max(0, Math.min(0.9, (height - 24) / 80))));
-  readyStraw?.classList.toggle("is-ready", progress >= 1);
+  if (!pourSection || !liquid) return;
+  const bounds = pourSection.getBoundingClientRect();
+  const travel = window.innerHeight + bounds.height;
+  const progress = reducedMotion ? 1 : Math.max(0, Math.min(1, (window.innerHeight - bounds.top) / Math.max(1, travel)));
+  const height = 224 * progress;
+  liquid.setAttribute("y", String(292 - height));
+  liquid.setAttribute("height", String(height));
   if (fillNumber) fillNumber.textContent = `${Math.round(progress * 100)}%`;
 }
 

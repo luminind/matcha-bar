@@ -82,16 +82,13 @@ h1 em, h2 em { color: var(--green); font-weight: 500; }
 .pour-caption, .pour-bottom { display: flex; justify-content: space-between; color: rgba(249,246,232,.62); font-size: 8px; letter-spacing: .17em; text-transform: uppercase; }
 .pour-bottom { font-size: 9px; letter-spacing: .1em; text-transform: none; }
 .cup-wrap { position: relative; height: 390px; display: grid; place-items: center; }
-.latte-cup { width: min(245px, 64%); height: 100%; overflow: visible; filter: drop-shadow(0 17px 19px rgba(9,22,14,.34)); }
-.cup-liquid { transition: opacity .2s ease; }
-.matcha-cloud { transform-origin: center; animation: cloud-drift 5s ease-in-out infinite alternate; transition: opacity .25s ease; }
+.latte-cup { width: min(245px, 64%); height: 100%; overflow: visible; filter: drop-shadow(0 15px 20px rgba(13,25,17,.22)); }
+.cup-liquid { transition: y .1s linear, height .1s linear; }
+.cup-label { position: absolute; left: 50%; top: 56%; transform: translate(-50%,-50%); font-family: var(--serif); font-size: 15px; line-height: .85; letter-spacing: -.08em; color: rgba(248,245,233,.88); text-align: center; mix-blend-mode: soft-light; pointer-events: none; }
 .ice-cube { transform-box: fill-box; transform-origin: center; animation: ice-float 3.8s ease-in-out infinite; }
 .ice-two { animation-delay: -.8s; }.ice-three { animation-delay: -1.7s; }
-.ready-straw { opacity: 0; transform: translateY(-20px); transform-box: view-box; transition: opacity .45s ease, transform .6s cubic-bezier(.2,.8,.2,1); filter: drop-shadow(1px 2px 2px rgba(24,39,26,.18)); }
-.ready-straw.is-ready { opacity: 1; transform: translateY(0); }
 .fill-number { position: absolute; top: 16px; right: 7%; color: #e8c4bc; font-family: var(--serif); font-size: 15px; font-style: italic; }
 @keyframes ice-float { 0%,100% { translate: 0 0; } 50% { translate: 0 -3px; } }
-@keyframes cloud-drift { from { transform: translate(-1px,0) scale(.99); } to { transform: translate(2px,-2px) scale(1.02); } }
 .concept-copy { max-width: 590px; padding-block: 65px; }
 .eyebrow-light { color: #c3cdb3; }
 .concept-copy h2, .coming-copy h2 { margin-bottom: 28px; color: #f9f6ec; font-size: clamp(44px, 5vw, 72px); line-height: 1.06; }
