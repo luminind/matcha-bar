@@ -122,6 +122,7 @@ document.querySelectorAll(".gallery-video").forEach((figure) => {
 
 const quoteForm = document.querySelector("#quote-form");
 const dateField = document.querySelector("#event-date");
+const phoneField = document.querySelector("#contact-phone");
 
 function formatEventDate() {
   if (!dateField) return;
@@ -163,6 +164,33 @@ dateField?.addEventListener("beforeinput", (event) => {
 });
 dateField?.addEventListener("input", formatEventDate);
 
+function formatPhone() {
+  if (!phoneField) return;
+  const caret = phoneField.selectionStart ?? phoneField.value.length;
+  const digitsBeforeCaret = phoneField.value.slice(0, caret).replace(/\D/g, "").length;
+  const digits = phoneField.value.replace(/\D/g, "").slice(0, 10);
+  phoneField.value = digits.match(/.{1,2}/g)?.join(" ") ?? "";
+  const newCaret = Math.min(phoneField.value.length, digitsBeforeCaret + Math.max(0, Math.floor((digitsBeforeCaret - 1) / 2)));
+  phoneField.setSelectionRange(newCaret, newCaret);
+  phoneField.setCustomValidity(!digits.length || digits.length === 10 ? "" : "Saisissez un numéro à 10 chiffres.");
+}
+
+phoneField?.addEventListener("beforeinput", (event) => {
+  const start = phoneField.selectionStart;
+  const end = phoneField.selectionEnd;
+  if (start === null || start !== end) return;
+  if (event.inputType === "deleteContentBackward" && phoneField.value[start - 1] === " ") {
+    event.preventDefault();
+    phoneField.setRangeText("", Math.max(0, start - 2), start, "end");
+    formatPhone();
+  } else if (event.inputType === "deleteContentForward" && phoneField.value[start] === " " && start + 1 < phoneField.value.length) {
+    event.preventDefault();
+    phoneField.setRangeText("", start, start + 2, "start");
+    formatPhone();
+  }
+});
+phoneField?.addEventListener("input", formatPhone);
+
 quoteForm?.addEventListener("submit", async (event) => {
   event.preventDefault();
   const status = document.querySelector("#form-status");
@@ -180,6 +208,7 @@ quoteForm?.addEventListener("submit", async (event) => {
     if (!response.ok) throw new Error("Échec de l’envoi");
     quoteForm.reset();
     dateField?.setCustomValidity("");
+    phoneField?.setCustomValidity("");
     status.textContent = "Merci ! Votre demande a bien été envoyée. Nous vous répondrons dès que possible.";
   } catch {
     status.textContent = "L’envoi n’a pas fonctionné. Réessayez ou écrivez-nous à matchabar.event@gmail.com.";
