@@ -182,7 +182,7 @@ quoteForm?.addEventListener("submit", async (event) => {
     dateField?.setCustomValidity("");
     status.textContent = "Merci ! Votre demande a bien été envoyée. Nous vous répondrons dès que possible.";
   } catch {
-    status.textContent = "L’envoi n’a pas fonctionné. Réessayez ou écrivez-nous à c.safrine@gmail.com.";
+    status.textContent = "L’envoi n’a pas fonctionné. Réessayez ou écrivez-nous à matchabar.event@gmail.com.";
   } finally {
     button.disabled = false;
   }
