@@ -87,6 +87,39 @@ if (!reducedMotion && "IntersectionObserver" in window) {
   revealElements.push(...document.querySelectorAll(".reveal"));
 }
 
+document.querySelectorAll(".gallery-video").forEach((figure) => {
+  const video = figure.querySelector("video");
+  const button = figure.querySelector(".video-toggle");
+  if (!video || !button) return;
+
+  let userPaused = reducedMotion;
+  const updateButton = () => {
+    button.textContent = video.paused ? "▶" : "❚❚";
+    button.setAttribute("aria-label", `${video.paused ? "Lire" : "Mettre en pause"} : ${video.getAttribute("aria-label")}`);
+  };
+  button.hidden = false;
+  video.addEventListener("play", updateButton);
+  video.addEventListener("pause", updateButton);
+  button.addEventListener("click", () => {
+    if (video.paused) {
+      userPaused = false;
+      video.play().catch(updateButton);
+    } else {
+      userPaused = true;
+      video.pause();
+    }
+  });
+  updateButton();
+
+  if ("IntersectionObserver" in window) {
+    const observer = new IntersectionObserver(([entry]) => {
+      if (entry.isIntersecting && !userPaused) video.play().catch(updateButton);
+      else if (!entry.isIntersecting) video.pause();
+    }, { threshold: 0.25 });
+    observer.observe(video);
+  }
+});
+
 document.querySelector("#demo-send")?.addEventListener("click", () => {
   const status = document.querySelector("#form-status");
   if (status) status.textContent = "Merci ! Ceci est un aperçu : aucune demande n’a été envoyée.";
