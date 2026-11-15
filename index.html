@@ -204,15 +204,15 @@
         <div class="form-card">
           <div class="form-topline"><span>DEMANDE DE DEVIS</span><span>01 — 04</span></div>
           <p class="form-intro">Quelques détails pour commencer.</p>
-          <form id="quote-form" autocomplete="on">
-            <div class="form-row"><label>Votre nom<input name="name" type="text" placeholder="Prénom et nom" autocomplete="name" /></label><label>Votre e-mail<input name="email" type="email" placeholder="bonjour@exemple.fr" autocomplete="email" /></label></div>
-            <div class="form-row"><label>Type d’événement<select name="event"><option value="" selected disabled>Choisir une occasion</option><option>Mariage</option><option>Événement d’entreprise</option><option>Pop-up</option><option>Événement privé</option><option>Autre</option></select></label><label>Date envisagée<input name="date" type="text" placeholder="JJ / MM / AAAA" /></label></div>
+          <form id="quote-form" action="https://formspree.io/f/xyeweweo" method="post" autocomplete="on">
+            <div class="form-row"><label>Votre nom *<input name="name" type="text" placeholder="Prénom et nom" autocomplete="name" required /></label><label>Votre e-mail *<input name="email" type="email" placeholder="bonjour@exemple.fr" autocomplete="email" required /></label></div>
+            <div class="form-row"><label>Type d’événement<select name="event"><option value="" selected disabled>Choisir une occasion</option><option>Mariage</option><option>Événement d’entreprise</option><option>Pop-up</option><option>Événement privé</option><option>Autre</option></select></label><label>Date envisagée<input name="date" id="event-date" type="text" placeholder="JJ / MM / AAAA" inputmode="numeric" maxlength="20" pattern="[0-9]{2}/[0-9]{2}/[0-9]{4}" title="Saisissez une date au format JJ/MM/AAAA" aria-describedby="date-help" /><span id="date-help" class="field-help">Format JJ/MM/AAAA</span></label></div>
             <div class="form-row"><label>Lieu / ville<input name="location" type="text" placeholder="Paris, lieu de réception…" /></label><label>Nombre d’invités<input name="guests" type="number" min="1" placeholder="Ex. 80" /></label></div>
             <label>Durée souhaitée<select name="duration"><option value="" selected disabled>Choisir une durée</option><option>Quelques heures</option><option>Demi-journée</option><option>Journée complète</option><option>À définir ensemble</option></select></label>
             <label>Votre projet<textarea name="message" rows="3" placeholder="Lieu, nombre d’invités, envies particulières…"></textarea></label>
-            <button class="button button-dark form-button" type="button" id="demo-send">Envoyer ma demande <span aria-hidden="true">↗</span></button>
-            <p class="form-status" id="form-status" aria-live="polite">Formulaire en aperçu : l’envoi sera activé prochainement.</p>
-            <p class="form-disclaimer">Aucune donnée n’est envoyée depuis cette version de démonstration.</p>
+            <button class="button button-dark form-button" type="submit">Envoyer ma demande <span aria-hidden="true">↗</span></button>
+            <p class="form-status" id="form-status" role="status" aria-live="polite"></p>
+            <p class="form-disclaimer">* Champs obligatoires. Vos informations sont utilisées pour répondre à votre demande. <a href="confidentialite.html">Politique de confidentialité</a>.</p>
           </form>
         </div>
       </section>
@@ -220,7 +220,7 @@
 
     <footer class="site-footer">
       <div class="footer-main section-wrap"><a class="brand brand-footer" href="#accueil" aria-label="Matcha Bar, retour en haut"><img class="brand-logo" src="assets/matcha-logo-small.png" alt="" width="480" height="447" /></a><p>Un peu de matcha,<br /><em>beaucoup de joie.</em></p><a class="footer-ig" href="https://www.instagram.com/matchabar.event/" target="_blank" rel="noreferrer">Instagram <span aria-hidden="true">↗</span></a></div>
-      <div class="footer-bottom section-wrap"><span>© <span id="year">2026</span> Matcha Bar</span><span>Fait avec soin à Paris <span aria-hidden="true">✳</span></span><a href="mailto:c.safrine@gmail.com">Contact</a></div>
+      <div class="footer-bottom section-wrap"><span>© <span id="year">2026</span> Matcha Bar</span><span>Fait avec soin à Paris <span aria-hidden="true">✳</span></span><a href="confidentialite.html">Confidentialité</a><a href="mailto:c.safrine@gmail.com">Contact</a></div>
     </footer>
     <div class="scroll-progress" aria-hidden="true"><span></span></div>
   </body>

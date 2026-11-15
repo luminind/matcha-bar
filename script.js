@@ -120,9 +120,72 @@ document.querySelectorAll(".gallery-video").forEach((figure) => {
   }
 });
 
-document.querySelector("#demo-send")?.addEventListener("click", () => {
+const quoteForm = document.querySelector("#quote-form");
+const dateField = document.querySelector("#event-date");
+
+function formatEventDate() {
+  if (!dateField) return;
+  const caret = dateField.selectionStart ?? dateField.value.length;
+  const digitsBeforeCaret = dateField.value.slice(0, caret).replace(/\D/g, "").length;
+  const digits = dateField.value.replace(/\D/g, "").slice(0, 8);
+  let formatted = digits.slice(0, 2);
+  if (digits.length >= 2) formatted += "/" + digits.slice(2, 4);
+  if (digits.length >= 4) formatted += "/" + digits.slice(4, 8);
+  dateField.value = formatted;
+  const newCaret = Math.min(formatted.length, digitsBeforeCaret + (digitsBeforeCaret >= 2 ? 1 : 0) + (digitsBeforeCaret >= 4 ? 1 : 0));
+  dateField.setSelectionRange(newCaret, newCaret);
+
+  let valid = !digits.length;
+  if (digits.length === 8) {
+    const day = Number(digits.slice(0, 2));
+    const month = Number(digits.slice(2, 4));
+    const year = Number(digits.slice(4, 8));
+    const leap = year % 4 === 0 && (year % 100 !== 0 || year % 400 === 0);
+    const daysInMonth = [31, leap ? 29 : 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
+    valid = year > 0 && month >= 1 && month <= 12 && day >= 1 && day <= daysInMonth[month - 1];
+  }
+  dateField.setCustomValidity(valid ? "" : "Saisissez une date valide au format JJ/MM/AAAA.");
+}
+
+dateField?.addEventListener("beforeinput", (event) => {
+  const start = dateField.selectionStart;
+  const end = dateField.selectionEnd;
+  if (start === null || start !== end) return;
+  if (event.inputType === "deleteContentBackward" && dateField.value[start - 1] === "/") {
+    event.preventDefault();
+    dateField.setRangeText("", Math.max(0, start - 2), start, "end");
+    formatEventDate();
+  } else if (event.inputType === "deleteContentForward" && dateField.value[start] === "/" && start + 1 < dateField.value.length) {
+    event.preventDefault();
+    dateField.setRangeText("", start, start + 2, "start");
+    formatEventDate();
+  }
+});
+dateField?.addEventListener("input", formatEventDate);
+
+quoteForm?.addEventListener("submit", async (event) => {
+  event.preventDefault();
   const status = document.querySelector("#form-status");
-  if (status) status.textContent = "Merci ! Ceci est un aperçu : aucune demande n’a été envoyée.";
+  const button = quoteForm.querySelector('button[type="submit"]');
+  if (!status || !button) return;
+
+  button.disabled = true;
+  status.textContent = "Envoi de votre demande…";
+  try {
+    const response = await fetch(quoteForm.action, {
+      method: "POST",
+      body: new FormData(quoteForm),
+      headers: { Accept: "application/json" },
+    });
+    if (!response.ok) throw new Error("Échec de l’envoi");
+    quoteForm.reset();
+    dateField?.setCustomValidity("");
+    status.textContent = "Merci ! Votre demande a bien été envoyée. Nous vous répondrons dès que possible.";
+  } catch {
+    status.textContent = "L’envoi n’a pas fonctionné. Réessayez ou écrivez-nous à c.safrine@gmail.com.";
+  } finally {
+    button.disabled = false;
+  }
 });
 
 const year = document.querySelector("#year");
