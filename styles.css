@@ -83,9 +83,9 @@ h1 em, h2 em { color: var(--green); font-weight: 500; }
 .cup-wrap { position: relative; height: 390px; display: grid; place-items: center; }
 .latte-cup { width: min(245px, 64%); height: 100%; overflow: visible; filter: drop-shadow(0 15px 20px rgba(13,25,17,.22)); }
 .cup-liquid { transition: y .1s linear, height .1s linear; }
-.cup-label { position: absolute; left: 50%; top: 56%; transform: translate(-50%,-50%); font-family: var(--serif); font-size: 15px; line-height: .85; letter-spacing: -.08em; color: rgba(248,245,233,.88); text-align: center; mix-blend-mode: soft-light; pointer-events: none; }
-.ice-cube { transform-box: fill-box; transform-origin: center; animation: ice-float 3.8s ease-in-out infinite; }
-.ice-two { animation-delay: -.8s; }.ice-three { animation-delay: -1.7s; }
+.cup-label { position: absolute; left: 50%; top: 56%; transform: translate(-50%,-50%); width: 56px; height: 25.5px; background: rgba(248,245,233,.88); mask: url("assets/matcha-logo-small.png") center / contain no-repeat; mix-blend-mode: soft-light; pointer-events: none; }
+.ice-cube { transform-box: view-box; transform-origin: 0 0; animation: ice-float 3.8s ease-in-out infinite; }
+.ice-two { animation-delay: -.8s; }.ice-three { animation-delay: -1.7s; }.ice-four { animation-delay: -2.3s; }.ice-five { animation-delay: -3.1s; }.ice-six { animation-delay: -.4s; }.ice-seven { animation-delay: -1.3s; }.ice-eight { animation-delay: -2.8s; }
 .fill-number { position: absolute; top: 16px; right: 7%; color: #e8c4bc; font-family: var(--serif); font-size: 15px; font-style: italic; }
 @keyframes ice-float { 0%,100% { translate: 0 0; } 50% { translate: 0 -3px; } }
 .concept-copy { max-width: 590px; padding-block: 65px; }
@@ -279,7 +279,7 @@ h1 em, h2 em { color: var(--green); font-weight: 500; }
   .pour-visual { position: relative; top: auto; width: 100%; height: 400px; padding: 14px 17px; }
   .cup-wrap { height: 295px; }
   .latte-cup { width: 190px; }
-  .cup-label { font-size: 12px; }
+  .cup-label { width: 45px; height: 20.4px; }
   .services { padding-block: 72px 78px; }
   .section-heading { display: block; margin-bottom: 32px; }
   .section-heading h2, .gallery-heading h2, .menu-heading h2, .quote-intro h2 { font-size: clamp(42px, 11vw, 60px); }

@@ -38,13 +38,13 @@ function updatePour() {
   const start = window.innerHeight * (isMobile ? 0.9 : 0.78);
   const end = window.innerHeight * (isMobile ? 0.25 : 0.04);
   const progress = reducedMotion ? 1 : Math.max(0, Math.min(1, (start - bounds.top) / (start - end)));
-  const height = 252 * progress;
+  const height = 252 * 0.8 * progress;
   const surface = 292 - height;
   liquid.setAttribute("y", String(surface));
   liquid.setAttribute("height", String(height));
   liquidGlint?.setAttribute("d", `M52 ${surface} Q124 ${surface - 11} 198 ${surface + 3}`);
   liquidGlint?.setAttribute("opacity", String(progress > 0.01 ? 0.55 : 0));
-  iceCluster?.setAttribute("transform", `translate(0 ${130 - 200 * progress})`);
+  iceCluster?.setAttribute("transform", `translate(0 ${130 - 160 * progress})`);
   if (fillNumber) fillNumber.textContent = `${Math.round(progress * 100)}%`;
 }
 
